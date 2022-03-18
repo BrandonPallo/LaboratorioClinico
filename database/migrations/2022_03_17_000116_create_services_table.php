@@ -24,9 +24,13 @@ class CreateServicesTable extends Migration
             $table->string('phone_1');
             $table->string('phone_2');
             $table->string('service_request');
-
+            $table->string('service_request_1');
+            $table->string('service_request_2');
+            $table->string('service_request_3');
+            $table->string('service_request_4');
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 

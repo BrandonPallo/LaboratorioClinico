@@ -71,6 +71,7 @@
                                         <input type="submit" class="btn-sm btn-red" value="{{ trans('global.delete') }}">
                                     </form>
                                 @endcan
+                                <a href="{{url('generate-pdf/' . $service->id)}}"  class="btn-sm btn-red">Exportar PDF</a>
 
                             </td>
 

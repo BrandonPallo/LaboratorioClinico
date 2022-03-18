@@ -33,8 +33,10 @@ class Service extends Model
         'phone_1',
         'phone_2',
         'service_request',
-
-
+        'service_request_1',
+        'service_request_2',
+        'service_request_3',
+        'service_request_4',
         'created_at',
         'updated_at',
         'deleted_at',

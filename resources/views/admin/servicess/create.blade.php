@@ -167,7 +167,7 @@
                 <h1>Service Request</h1>
             </div>
             <div class="mb-3">
-                <label for="service_request" class="text-xs required">{{ trans('cruds.service.fields.service_request') }}</label>
+                <label for="service_request" class="text-xs required">{{ trans('cruds.service.fields.service_request_1') }}</label>
 
                 <div class="form-group">
                     <input type="text" id="service_request" name="service_request" class="{{ $errors->has('service_request') ? ' is-invalid' : '' }}" value="{{ old('service_request') }}" required>
@@ -175,11 +175,46 @@
                 @if($errors->has('service_request'))
                     <p class="invalid-feedback">{{ $errors->first('service_request') }}</p>
                 @endif
-                <span class="block">{{ trans('cruds.service.fields.service_request_helper') }}</span>
+                <span class="block">{{ trans('cruds.service.fields.service_request_helper_1') }}</span>
+            </div>
+            <div class="mb-3">
+                <label for="service_request_1" >{{ trans('cruds.service.fields.service_request_2') }}</label>
+
+                <div class="form-group">
+                    <input type="text" id="service_request_1" name="service_request_1" class="{{ $errors->has('service_request_1') ? ' is-invalid' : '' }}" value="{{ old('service_request_1') }}" >
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="service_request_2" >{{ trans('cruds.service.fields.service_request_3') }}</label>
+
+                <div class="form-group">
+                    <input type="text" id="service_request_2" name="service_request_2" class="{{ $errors->has('service_request_2') ? ' is-invalid' : '' }}" value="{{ old('service_request_2') }}" >
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="service_request_3" >{{ trans('cruds.service.fields.service_request_4') }}</label>
+
+                <div class="form-group">
+                    <input type="text" id="service_request_3" name="service_request_3" class="{{ $errors->has('service_request_3') ? ' is-invalid' : '' }}" value="{{ old('service_request_3') }}" >
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="service_request_4" >{{ trans('cruds.service.fields.service_request_5') }}</label>
+
+                <div class="form-group">
+                    <input type="text" id="service_request_4" name="service_request_4" class="{{ $errors->has('service_request_4') ? ' is-invalid' : '' }}" value="{{ old('service_request_4') }}" >
+                </div>
+
             </div>
 
 {{-- users --}}
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="users" class="text-xs">{{ trans('cruds.project.fields.users') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn-sm btn-indigo select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
@@ -194,7 +229,7 @@
                     <p class="invalid-feedback">{{ $errors->first('users') }}</p>
                 @endif
                 <span class="block">{{ trans('cruds.project.fields.users_helper') }}</span>
-            </div>
+            </div> -->
         </div>
 
         <div class="footer">

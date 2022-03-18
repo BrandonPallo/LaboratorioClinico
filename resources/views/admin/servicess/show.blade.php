@@ -128,15 +128,48 @@
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.service.fields.service_request') }}
+                        {{ trans('cruds.service.fields.service_request_1') }}
                     </th>
                     <td>
                         {{ $service->service_request }}
                     </td>
                 </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.service_request_2') }}
+                    </th>
+                    <td>
+                        {{ $service->service_request_1 }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.service_request_3') }}
+                    </th>
+                    <td>
+                        {{ $service->service_request_2 }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.service_request_4') }}
+                    </th>
+                    <td>
+                        {{ $service->service_request_3 }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.service_request_5') }}
+                    </th>
+                    <td>
+                        {{ $service->service_request_4 }}
+                    </td>
+                </tr>
             </tbody>
 {{-- users --}}
-            <tbody>
+
+            <!-- <tbody>
                 <tr>
                     <th>
                         {{ trans('cruds.project.fields.users') }}
@@ -147,13 +180,13 @@
                         @endforeach
                     </td>
                 </tr>
-            </tbody>
+            </tbody> -->
         </table>
         <div class="block pt-4">
             <a class="btn-md btn-gray" href="{{ route('admin.services.index') }}">
                 {{ trans('global.back_to_list') }}
             </a>
-            <a href="{{url('generate-pdf/' . $service->id)}}"  class="btn-sm btn-blue">Exportar PDF</a>
+            <a href="{{url('generate-pdf/' . $service->id)}}"  class="btn-sm btn-red">Exportar PDF</a>
         </div>
     </div>
 </div>

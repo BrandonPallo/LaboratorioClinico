@@ -9,7 +9,6 @@ use PDF;
 
 class HomeController extends Controller
 {
-
     /**
      * Show the application dashboard.
      *
@@ -47,6 +46,8 @@ class HomeController extends Controller
     //Función para generar pdf
     public function generatePDF($id)
     {
+        $cont=0;
+        var_dump($cont);
         //Establecer la ruta del renderizador del motor PDF
         $domPdfPath = base_path('vendor/dompdf/dompdf');
         \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
@@ -76,19 +77,21 @@ class HomeController extends Controller
         $anio = date("Y", $fechaComoEntero);
         $mes = date("m", $fechaComoEntero);
         $dia = date("d", $fechaComoEntero);
+        
         //Guardar archivo temporal de Word con un nuevo nombre
         $saveDocPath = public_path('new-result.docx');
         $templateProcessor->saveAs($saveDocPath);
         // Cargar temporalmente crear un archivo word
         $Content = \PhpOffice\PhpWord\IOFactory::load($saveDocPath);
         //Guardalo en PDF
-        $savePdfPath = public_path('S'.$dia.$mes.$anio.'.pdf');
+        $cont+=1;
+        $savePdfPath = public_path('S_'.$service->addres_1.'_'.$service->csr.'_00'.$cont.'_'.$dia.$mes.$anio.'.pdf');
         $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
-                /*@ Elimina el arcihvo temporal de word */
-        if ( file_exists($saveDocPath) ) {
+        $PDFWriter->save($savePdfPath);
+        return response()->download($savePdfPath); 
+        /*@ Elimina el arcihvo temporal de word */
+         if ( file_exists($saveDocPath) ) {
             unlink($saveDocPath);
         }
-        $PDFWriter->save($savePdfPath); 
-        return response()->download($savePdfPath); 
     }
 }
