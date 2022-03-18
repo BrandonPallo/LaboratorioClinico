@@ -32,8 +32,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('projects/destroy', 'ProjectsController@massDestroy')->name('projects.massDestroy');
     Route::resource('projects', 'ProjectsController');
 
-    //Route::resource('/form', 'FormsController');
-    //forms
+
+    //Services
+    Route::delete('services/destroy', 'ServicesController@massDestroy')->name('services.massDestroy');
+    Route::resource('services', 'ServicesController');
+
 
 
     // Folders
@@ -51,3 +54,5 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 });
 //ruta para generar el documento de word
 Route::get('generate-docx/{id}', 'HomeController@generateDocx');
+//ruta para generar el documento pdf
+Route::get('/generate-pdf/{id}', 'HomeController@generatePDF');

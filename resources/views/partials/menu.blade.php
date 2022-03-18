@@ -17,7 +17,7 @@
 
 
         {{-- usuarios --}}
-        {{-- @can('user_management_access')
+        @can('user_management_access')
             <div class="nav-dropdown">
                 <a class="nav-link" href="#">
                     <i class="fa-fw fas fa-users">
@@ -62,7 +62,7 @@
 
                 </div>
             </div>
-        @endcan --}}
+        @endcan
 
         {{-- proyect --}}
         {{-- <div class="nav-dropdown">
@@ -181,6 +181,18 @@
 
             </div>
         </div>
+
+        {{-- Services --}}
+        @can('service_access')
+            <a class="nav-link{{ request()->is('admin/services*') ? ' active' : '' }}"
+                href="{{ route('admin.services.index') }}">
+                <i class="fa-fw fas fa-industry">
+
+                </i>
+
+                <span class="mx-4">{{ trans('cruds.service.title') }}</span>
+            </a>
+        @endcan
 
         @can('folder_access')
             <a class="nav-link{{ request()->is('admin/folders*') ? ' active' : '' }}"

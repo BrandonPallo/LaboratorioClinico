@@ -7,7 +7,7 @@
 
     <div class="body">
         <div class="block pb-4">
-            <a class="btn-md btn-gray" href="{{ route('admin.projects.index') }}">
+            <a class="btn-md btn-gray" href="{{ route('admin.services.index') }}">
                 {{ trans('global.back_to_list') }}
             </a>
         </div>
@@ -15,144 +15,134 @@
             <tbody>
                 <tr>
                     <th>
-                        {{ trans('cruds.project.fields.id') }}
+                        {{ trans('cruds.service.fields.id') }}
                     </th>
                     <td>
-                        {{ $project->id }}
+                        {{ $service->id }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.project.fields.name') }}
+                        {{ trans('cruds.service.fields.name') }}
                     </th>
                     <td>
-                        {{ $project->name }}
+                        {{ $service->name }}
                     </td>
                 </tr>
 
                 <tr>
                     <th>
-                        {{ trans('cruds.project.fields.revisado') }}
+                        {{ trans('cruds.service.fields.company') }}
                     </th>
                     <td>
-                        {{ $project->revisado }}
+                        {{ $service->company }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.project.fields.informe') }}
+                        {{ trans('cruds.service.fields.service_engineer') }}
                     </th>
                     <td>
-                        {{ $project->informe }}
+                        {{ $service->service_engineer }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.project.fields.felaboracion') }}
+                        {{ trans('cruds.service.fields.date') }}
                     </th>
                     <td>
-                        {{ $project->felaboracion }}
+                        {{ $service->date }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.project.fields.frevision') }}
+                        {{ trans('cruds.service.fields.csr') }}
                     </th>
                     <td>
-                        {{ $project->frevision }}
+                        {{ $service->csr }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.project.fields.rev') }}
+                        {{ trans('cruds.service.fields.company_1') }}
                     </th>
                     <td>
-                        {{ $project->rev }}
+                        {{ $service->company_1 }}
                     </td>
                 </tr>
                 <tr>
-                    {{-- <th>
-                        {{ trans('cruds.project.fields.hoja') }}
+                    <th>
+                        {{ trans('cruds.service.fields.company_2') }}
                     </th>
                     <td>
-                        {{ $project->hoja }}
+                        {{ $service->company_2 }}
                     </td>
-                </tr> --}}
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.addres_1') }}
+                    </th>
+                    <td>
+                        {{ $service->addres_1 }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.addres_2') }}
+                    </th>
+                    <td>
+                        {{ $service->addres_2 }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.site_contact') }}
+                    </th>
+                    <td>
+                        {{ $service->site_contact }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.attention') }}
+                    </th>
+                    <td>
+                        {{ $service->attention }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.phone_1') }}
+                    </th>
+                    <td>
+                        {{ $service->phone_1 }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.phone_2') }}
+                    </th>
+                    <td>
+                        {{ $service->phone_2 }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.service.fields.service_request') }}
+                    </th>
+                    <td>
+                        {{ $service->service_request }}
+                    </td>
+                </tr>
             </tbody>
-{{-- datos empresa --}}
+{{-- users --}}
             <tbody>
-                <tr>
-                    <th>
-                        {{ trans('cruds.project.fields.empresa') }}
-                    </th>
-                    <td>
-                        {{ $project->empresa }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.project.fields.proyecto') }}
-                    </th>
-                    <td>
-                        {{ $project->proyecto }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.project.fields.codigo_proy') }}
-                    </th>
-                    <td>
-                        {{ $project->codigo_proy }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.project.fields.ubicacion') }}
-                    </th>
-                    <td>
-                        {{ $project->ubicacion }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.project.fields.fentrega') }}
-                    </th>
-                    <td>
-                        {{ $project->fentrega }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.project.fields.documento') }}
-                    </th>
-                    <td>
-                        {{ $project->documento }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.project.fields.revisado_por') }}
-                    </th>
-                    <td>
-                        {{ $project->revisado_por }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.project.fields.nombre_documento') }}
-                    </th>
-                    <td>
-                        {{ $project->nombre_documento }}
-                    </td>
-                </tr>
-
-
                 <tr>
                     <th>
                         {{ trans('cruds.project.fields.users') }}
                     </th>
                     <td>
-                        @foreach($project->users as $key => $users)
+                        @foreach($service->users as $key => $users)
                             <span class="label label-info">{{ $users->name }}</span>
                         @endforeach
                     </td>
@@ -160,11 +150,10 @@
             </tbody>
         </table>
         <div class="block pt-4">
-            <a class="btn-md btn-gray" href="{{ route('admin.projects.index') }}">
+            <a class="btn-md btn-gray" href="{{ route('admin.services.index') }}">
                 {{ trans('global.back_to_list') }}
             </a>
-            <a href="{{url('generate-docx/' . $project->id)}}"  class="btn-sm btn-blue">Exportar Word</a>
-            <a href="{{url('generate-pdf/' . $project->id)}}"  class="btn-sm btn-blue">Exportar PDF</a>
+            <a href="{{url('generate-pdf/' . $service->id)}}"  class="btn-sm btn-blue">Exportar PDF</a>
         </div>
     </div>
 </div>
