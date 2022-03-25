@@ -56,3 +56,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 Route::get('generate-docx/{id}', 'HomeController@generateDocx');
 //ruta para generar el documento pdf
 Route::get('/generate-pdf/{id}', 'HomeController@generatePDF');
+//RUTA GOOGLE MAPS
+Route::get('/map', function(){
+    return view('map');
+});

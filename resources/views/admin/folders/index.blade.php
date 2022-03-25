@@ -120,7 +120,6 @@
 
         return
       }
-
       if (confirm('{{ trans('global.areYouSure') }}')) {
         $.ajax({
           headers: {'x-csrf-token': _token},
@@ -144,8 +143,6 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-
 })
-
 </script>
 @endsection

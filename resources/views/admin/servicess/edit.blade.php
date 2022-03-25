@@ -11,6 +11,7 @@
         <div class="body">
             <div class="header">
                 <h1>DATOS</h1>
+                <a class="btn-md btn-gray" href="{{ route('admin.services.index') }}">{{ trans('global.back_to_list') }}</a>
             </div>
             <div class="mb-3">
                 <label for="name" class="text-xs required">{{ trans('cruds.service.fields.name') }}</label>
@@ -24,9 +25,8 @@
                 <span class="block">{{ trans('cruds.service.fields.name_helper') }}</span>
             </div>
 
-
-
             {{-- datos --}}
+            
             <div class="mb-3">
                 <label for="company" class="text-xs required">{{ trans('cruds.service.fields.company') }}</label>
 
@@ -74,6 +74,10 @@
                 @endif
                 <span class="block">{{ trans('cruds.service.fields.csr_helper') }}</span>
             </div>
+            <div class="header">
+                <h1>Service Required At</h1>
+            </div>
+
             <div class="mb-3">
                 <label for="company_1" class="text-xs required">{{ trans('cruds.service.fields.company_1') }}</label>
 
@@ -163,16 +167,72 @@
                 @endif
                 <span class="block">{{ trans('cruds.service.fields.phone_2_helper') }}</span>
             </div>
+            {{-- service request --}}
+            <div class="header">
+                <h1>Service Request</h1>
+            </div>
             <div class="mb-3">
-                <label for="service_request" class="text-xs required">{{ trans('cruds.service.fields.service_request') }}</label>
+                <label for="service_request" class="text-xs required">{{ trans('cruds.service.fields.service_request_1') }}</label>
 
                 <div class="form-group">
                     <input type="text" id="service_request" name="service_request" class="{{ $errors->has('service_request') ? ' is-invalid' : '' }}" value="{{ old('service_request', $service->service_request) }}" required>
                 </div>
-                @if($errors->has('service_request'))
+                @if($errors->has('service_request'))6
                     <p class="invalid-feedback">{{ $errors->first('service_request') }}</p>
                 @endif
-                <span class="block">{{ trans('cruds.service.fields.service_request_helper') }}</span>
+                <span class="block">{{ trans('cruds.service.fields.service_request_helper_1') }}</span>
+            </div>
+
+            <div class="mb-3">
+                <label for="service_request_1" class="text-xs required">{{ trans('cruds.service.fields.service_request_2') }}</label>
+
+                <div class="form-group">
+                    <input type="text" id="service_request_1" name="service_request_1" class="{{ $errors->has('service_request_1') ? ' is-invalid' : '' }}" value="{{ old('service_request_1', $service->service_request_1) }}" >
+                </div>
+                @if($errors->has('service_request_1'))
+                    <p class="invalid-feedback">{{ $errors->first('service_request_1') }}</p>
+                @endif
+                <span class="block">{{ trans('cruds.service.fields.service_request_helper_2') }}</span>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="service_request_2" class="text-xs required">{{ trans('cruds.service.fields.service_request_3') }}</label>
+
+                <div class="form-group">
+                    <input type="text" id="service_request_2" name="service_request_2" class="{{ $errors->has('service_request_2') ? ' is-invalid' : '' }}" value="{{ old('service_request_2', $service->service_request_2) }}" >
+                </div>
+                @if($errors->has('service_request_2'))
+                    <p class="invalid-feedback">{{ $errors->first('service_request_2') }}</p>
+                @endif
+                <span class="block">{{ trans('cruds.service.fields.service_request_helper_3') }}</span>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="service_request_3" class="text-xs required">{{ trans('cruds.service.fields.service_request_4') }}</label>
+
+                <div class="form-group">
+                    <input type="text" id="service_request_3" name="service_request_3" class="{{ $errors->has('service_request_3') ? ' is-invalid' : '' }}" value="{{ old('service_request_3', $service->service_request_3) }}" >
+                </div>
+                @if($errors->has('service_request_3'))
+                    <p class="invalid-feedback">{{ $errors->first('service_request_3') }}</p>
+                @endif
+                <span class="block">{{ trans('cruds.service.fields.service_request_helper_4') }}</span>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="service_request_4" class="text-xs required">{{ trans('cruds.service.fields.service_request_5') }}</label>
+
+                <div class="form-group">
+                    <input type="text" id="service_request_4" name="service_request_4" class="{{ $errors->has('service_request_4') ? ' is-invalid' : '' }}" value="{{ old('service_request_4', $service->service_request_4) }}" >
+                </div>
+                @if($errors->has('service_request_4'))
+                    <p class="invalid-feedback">{{ $errors->first('service_request_4') }}</p>
+                @endif
+                <span class="block">{{ trans('cruds.service.fields.service_request_helper_5') }}</span>
+
             </div>
 {{-- users --}}
             <div class="mb-3">
@@ -192,9 +252,9 @@
                 <span class="block">{{ trans('cruds.service.fields.users_helper') }}</span>
             </div>
         </div>
-
         <div class="footer">
             <button type="submit" class="submit-button">{{ trans('global.save') }}</button>
+            <a class="btn-md btn-gray" href="{{ route('admin.services.index') }}">{{ trans('global.back_to_list') }}</a>
         </div>
     </form>
 </div>

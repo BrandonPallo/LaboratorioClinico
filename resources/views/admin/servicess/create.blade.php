@@ -106,6 +106,9 @@
                     <p class="invalid-feedback">{{ $errors->first('addres_1') }}</p>
                 @endif
                 <span class="block">{{ trans('cruds.service.fields.addres_1_helper') }}</span>
+                
+                
+                
             </div>
             <div class="mb-3">
                 <label for="addres_2" class="text-xs required">{{ trans('cruds.service.fields.addres_2') }}</label>
@@ -234,6 +237,9 @@
 
         <div class="footer">
             <button type="submit" class="submit-button">{{ trans('global.save') }}</button>
+            <a class="btn-md btn-gray" href="{{ route('admin.services.index') }}">
+                {{ trans('global.back_to_list') }}
+            </a>
         </div>
     </form>
 </div>

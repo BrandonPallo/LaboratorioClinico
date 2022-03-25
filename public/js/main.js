@@ -80,6 +80,5 @@ $('button.sidebar-toggler').click(function () {
 
   if ($('.dropdown-items .nav-active')) {
     $('.dropdown-items .active').parents('.nav-dropdown').click();
-  }
-
+  }  
 })

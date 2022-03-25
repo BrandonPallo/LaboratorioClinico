@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Exception;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PDF;
+use DB;
 
 class HomeController extends Controller
 {
@@ -36,7 +37,7 @@ class HomeController extends Controller
         //Definir el nombre del documento acorde las fechas
         $fecha = $project->fentrega;
         $fechaComoEntero = strtotime($fecha);
-        $anio = date("Y", $fechaComoEntero);
+        $anio = date("y", $fechaComoEntero);
         $mes = date("m", $fechaComoEntero);
         $dia = date("d", $fechaComoEntero);
         //guardamos y descargamos el documento en word
@@ -46,8 +47,7 @@ class HomeController extends Controller
     //Función para generar pdf
     public function generatePDF($id)
     {
-        $cont=0;
-        var_dump($cont);
+        
         //Establecer la ruta del renderizador del motor PDF
         $domPdfPath = base_path('vendor/dompdf/dompdf');
         \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
@@ -74,24 +74,30 @@ class HomeController extends Controller
         //Definir el nombre del documento acorde las fechas
         $fecha = $service->date;
         $fechaComoEntero = strtotime($fecha);
-        $anio = date("Y", $fechaComoEntero);
+        $anio = date("y", $fechaComoEntero);
         $mes = date("m", $fechaComoEntero);
         $dia = date("d", $fechaComoEntero);
-        
         //Guardar archivo temporal de Word con un nuevo nombre
         $saveDocPath = public_path('new-result.docx');
         $templateProcessor->saveAs($saveDocPath);
         // Cargar temporalmente crear un archivo word
         $Content = \PhpOffice\PhpWord\IOFactory::load($saveDocPath);
-        //Guardalo en PDF
-        $cont+=1;
-        $savePdfPath = public_path('S_'.$service->addres_1.'_'.$service->csr.'_00'.$cont.'_'.$dia.$mes.$anio.'.pdf');
-        $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
-        $PDFWriter->save($savePdfPath);
-        return response()->download($savePdfPath); 
+        //Guardar en PDF
+        //incrementar el contador de descargas 
+        DB::table('services')->increment('cont');
+        if($service->cont<10){
+            $savePdfPath = public_path('S_'.$service->addres_1.'_'.$service->csr.'_00'.$service->cont.'_'.$dia.$mes.$anio.'.pdf');
+        }
+        else{
+            $savePdfPath = public_path('S_'.$service->addres_1.'_'.$service->csr.'_0'.$service->cont.'_'.$dia.$mes.$anio.'.pdf');            
+        }
         /*@ Elimina el arcihvo temporal de word */
          if ( file_exists($saveDocPath) ) {
             unlink($saveDocPath);
         }
+        //descargar el pdf
+        $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
+        $PDFWriter->save($savePdfPath);
+        return response()->download($savePdfPath); 
     }
 }
