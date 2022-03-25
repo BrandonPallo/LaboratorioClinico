@@ -18,7 +18,7 @@ class CreateRoadMap extends Migration
             $table->string('day');
             $table->string('date');
             $table->string('out_time');
-            $table->date('start_time');
+            $table->string('start_time');
             $table->string('end_time');
             $table->string('in_time');            
             $table->timestamps();

@@ -24,11 +24,11 @@
                             {{ trans('cruds.roadmap.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.roadmap.fields.name') }}
+                            {{ trans('cruds.roadmap.fields.date') }}
                         </th>
-                        {{-- <th>
+                        <!-- {{-- <th>
                             {{ trans('cruds.project.fields.users') }}
-                        </th> --}}
+                        </th> --}} -->
                         <th>
                             &nbsp;
                         </th>
@@ -44,13 +44,13 @@
                                 {{ $roadmap->id ?? '' }}
                             </td>
                             <td>
-                                {{ $roadmap->name ?? '' }}
+                                {{ $roadmap->date ?? '' }}
                             </td>
-                            {{-- <td>
+                            <!-- {{-- <td>
                                 @foreach($project->users as $key => $item)
                                     <span class="badge blue">{{ $item->name }}</span>
                                 @endforeach
-                            </td> --}}
+                            </td> --}} -->
                             <td>
                                 @can('roadmap_show')
                                     <a class="btn-sm btn-indigo" href="{{ route('admin.roadmaps.show', $roadmap->id) }}">

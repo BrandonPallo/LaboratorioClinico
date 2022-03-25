@@ -11,47 +11,23 @@
             <div class="header">
                 <h1>DATA</h1>
             </div>
-            {{-- formulario servicio --}}
+            {{-- formulario hoja de ruta --}}
             <div class="mb-3">
-                <label for="name" class="text-xs required">{{ trans('cruds.roadmap.fields.name') }}</label>
+                <label for="day" class="text-xs required">{{ trans('cruds.roadmap.fields.day') }}</label>
                 <div class="form-group">
-                    <input type="text" id="name" name="name" class="{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" required>
+                    <input type="text" id="day" name="day" class="{{ $errors->has('day') ? ' is-invalid' : '' }}" value="{{ old('day') }}" required>
                 </div>
-                @if($errors->has('name'))
-                    <p class="invalid-feedback">{{ $errors->first('name') }}</p>
+                @if($errors->has('day'))
+                    <p class="invalid-feedback">{{ $errors->first('day') }}</p>
                 @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.name_helper') }}</span>
+                <span class="block">{{ trans('cruds.roadmap.fields.day_helper') }}</span>
             </div>
-{{-- datos --}}
-            <div class="mb-3">
-                <label for="company" class="text-xs required">{{ trans('cruds.roadmap.fields.company') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="company" name="company" class="{{ $errors->has('company') ? ' is-invalid' : '' }}" value="{{ old('company') }}" required>
-                </div>
-                @if($errors->has('company'))
-                    <p class="invalid-feedback">{{ $errors->first('company') }}</p>
-                @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.company_helper') }}</span>
-            </div>
-
-            <div class="mb-3">
-                <label for="roadmap_engineer" class="text-xs required">{{ trans('cruds.roadmap.fields.roadmap_engineer') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="roadmap_engineer" name="roadmap_engineer" class="{{ $errors->has('roadmap_engineer') ? ' is-invalid' : '' }}" value="{{ old('roadmap_engineer') }}" required>
-                </div>
-                @if($errors->has('roadmap_engineer'))
-                    <p class="invalid-feedback">{{ $errors->first('roadmap_engineer') }}</p>
-                @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.roadmap_engineer_helper') }}</span>
-            </div>
-
+{{-- datos --}}            
             <div class="mb-3">
                 <label for="date" class="text-xs required">{{ trans('cruds.roadmap.fields.date') }}</label>
 
                 <div class="form-group">
-                    <input type="date" id="date" name="date" class="{{ $errors->has('date') ? ' is-invalid' : '' }}" value="{{ old('date') }}" required>
+                    <input type="text" id="date" name="date" class="{{ $errors->has('date') ? ' is-invalid' : '' }}" value="{{ old('date') }}" required>
                 </div>
                 @if($errors->has('date'))
                     <p class="invalid-feedback">{{ $errors->first('date') }}</p>
@@ -60,159 +36,52 @@
             </div>
 
             <div class="mb-3">
-                <label for="csr" class="text-xs required">{{ trans('cruds.roadmap.fields.csr') }}</label>
+                <label for="out_time" class="text-xs required">{{ trans('cruds.roadmap.fields.out_time') }}</label>
 
                 <div class="form-group">
-                    <input type="text" id="csr" name="csr" class="{{ $errors->has('csr') ? ' is-invalid' : '' }}" value="{{ old('csr') }}" required>
+                    <input type="text" id="out_time" name="out_time" class="{{ $errors->has('out_time') ? ' is-invalid' : '' }}" value="{{ old('out_time') }}" required>
                 </div>
-                @if($errors->has('csr'))
-                    <p class="invalid-feedback">{{ $errors->first('csr') }}</p>
+                @if($errors->has('out_time'))
+                    <p class="invalid-feedback">{{ $errors->first('out_time') }}</p>
                 @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.csr_helper') }}</span>
-            </div>
-            <div class="header">
-                <h1>roadmap Required At</h1>
+                <span class="block">{{ trans('cruds.roadmap.fields.out_time_helper') }}</span>
             </div>
 
             <div class="mb-3">
-                <label for="company_1" class="text-xs required">{{ trans('cruds.roadmap.fields.company_1') }}</label>
+                <label for="start_time" class="text-xs required">{{ trans('cruds.roadmap.fields.start_time') }}</label>
 
                 <div class="form-group">
-                    <input type="text" id="company_1" name="company_1" class="{{ $errors->has('company_1') ? ' is-invalid' : '' }}" value="{{ old('company_1') }}" required>
+                    <input type="start_time" id="start_time" name="start_time" class="{{ $errors->has('start_time') ? ' is-invalid' : '' }}" value="{{ old('start_time') }}" required>
                 </div>
-                @if($errors->has('company_1'))
-                    <p class="invalid-feedback">{{ $errors->first('company_1') }}</p>
+                @if($errors->has('start_time'))
+                    <p class="invalid-feedback">{{ $errors->first('start_time') }}</p>
                 @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.company_1_helper') }}</span>
-            </div>
+                <span class="block">{{ trans('cruds.roadmap.fields.start_time_helper') }}</span>
+            </div>   
+
             <div class="mb-3">
-                <label for="company_2" class="text-xs required">{{ trans('cruds.roadmap.fields.company_2') }}</label>
+                <label for="end_time" class="text-xs required">{{ trans('cruds.roadmap.fields.end_time') }}</label>
 
                 <div class="form-group">
-                    <input type="text" id="company_2" name="company_2" class="{{ $errors->has('company_2') ? ' is-invalid' : '' }}" value="{{ old('company_2') }}" required>
+                    <input type="text" id="end_time" name="end_time" class="{{ $errors->has('end_time') ? ' is-invalid' : '' }}" value="{{ old('end_time') }}" required>
                 </div>
-                @if($errors->has('company_2'))
-                    <p class="invalid-feedback">{{ $errors->first('company_2') }}</p>
+                @if($errors->has('end_time'))
+                    <p class="invalid-feedback">{{ $errors->first('end_time') }}</p>
                 @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.company_2_helper') }}</span>
+                <span class="block">{{ trans('cruds.roadmap.fields.end_time_helper') }}</span>
             </div>
             <div class="mb-3">
-                <label for="addres_1" class="text-xs required">{{ trans('cruds.roadmap.fields.addres_1') }}</label>
+                <label for="in_time" class="text-xs required">{{ trans('cruds.roadmap.fields.in_time') }}</label>
 
                 <div class="form-group">
-                    <input type="text" id="addres_1" name="addres_1" class="{{ $errors->has('addres_1') ? ' is-invalid' : '' }}" value="{{ old('addres_1') }}" required>
+                    <input type="text" id="in_time" name="in_time" class="{{ $errors->has('in_time') ? ' is-invalid' : '' }}" value="{{ old('in_time') }}" required>
                 </div>
-                @if($errors->has('addres_1'))
-                    <p class="invalid-feedback">{{ $errors->first('addres_1') }}</p>
+                @if($errors->has('in_time'))
+                    <p class="invalid-feedback">{{ $errors->first('in_time') }}</p>
                 @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.addres_1_helper') }}</span>
+                <span class="block">{{ trans('cruds.roadmap.fields.in_time_helper') }}</span>
             </div>
-            <div class="mb-3">
-                <label for="addres_2" class="text-xs required">{{ trans('cruds.roadmap.fields.addres_2') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="addres_2" name="addres_2" class="{{ $errors->has('addres_2') ? ' is-invalid' : '' }}" value="{{ old('addres_2') }}" required>
-                </div>
-                @if($errors->has('addres_2'))
-                    <p class="invalid-feedback">{{ $errors->first('addres_2') }}</p>
-                @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.addres_2_helper') }}</span>
-            </div>
-
-            <div class="mb-3">
-                <label for="site_contact" class="text-xs required">{{ trans('cruds.roadmap.fields.site_contact') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="site_contact" name="site_contact" class="{{ $errors->has('site_contact') ? ' is-invalid' : '' }}" value="{{ old('site_contact') }}" required>
-                </div>
-                @if($errors->has('site_contact'))
-                    <p class="invalid-feedback">{{ $errors->first('site_contact') }}</p>
-                @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.site_contact_helper') }}</span>
-            </div>
-            <div class="mb-3">
-                <label for="attention" class="text-xs required">{{ trans('cruds.roadmap.fields.attention') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="attention" name="attention" class="{{ $errors->has('attention') ? ' is-invalid' : '' }}" value="{{ old('attention') }}" required>
-                </div>
-                @if($errors->has('attention'))
-                    <p class="invalid-feedback">{{ $errors->first('attention') }}</p>
-                @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.attention_helper') }}</span>
-            </div>
-            <div class="mb-3">
-                <label for="phone_1" class="text-xs required">{{ trans('cruds.roadmap.fields.phone_1') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="phone_1" name="phone_1" class="{{ $errors->has('phone_1') ? ' is-invalid' : '' }}" value="{{ old('phone_1') }}" required>
-                </div>
-                @if($errors->has('phone_1'))
-                    <p class="invalid-feedback">{{ $errors->first('phone_1') }}</p>
-                @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.phone_1_helper') }}</span>
-            </div>
-            <div class="mb-3">
-                <label for="phone_2" class="text-xs required">{{ trans('cruds.roadmap.fields.phone_2') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="phone_2" name="phone_2" class="{{ $errors->has('phone_2') ? ' is-invalid' : '' }}" value="{{ old('phone_2') }}" required>
-                </div>
-                @if($errors->has('phone_2'))
-                    <p class="invalid-feedback">{{ $errors->first('phone_2') }}</p>
-                @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.phone_2_helper') }}</span>
-            </div>
-            <div class="header">
-                <h1>roadmap Request</h1>
-            </div>
-            <div class="mb-3">
-                <label for="roadmap_request" class="text-xs required">{{ trans('cruds.roadmap.fields.roadmap_request_1') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="roadmap_request" name="roadmap_request" class="{{ $errors->has('roadmap_request') ? ' is-invalid' : '' }}" value="{{ old('roadmap_request') }}" required>
-                </div>
-                @if($errors->has('roadmap_request'))
-                    <p class="invalid-feedback">{{ $errors->first('roadmap_request') }}</p>
-                @endif
-                <span class="block">{{ trans('cruds.roadmap.fields.roadmap_request_helper_1') }}</span>
-            </div>
-            <div class="mb-3">
-                <label for="roadmap_request_1" >{{ trans('cruds.roadmap.fields.roadmap_request_2') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="roadmap_request_1" name="roadmap_request_1" class="{{ $errors->has('roadmap_request_1') ? ' is-invalid' : '' }}" value="{{ old('roadmap_request_1') }}" >
-                </div>
-
-            </div>
-
-            <div class="mb-3">
-                <label for="roadmap_request_2" >{{ trans('cruds.roadmap.fields.roadmap_request_3') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="roadmap_request_2" name="roadmap_request_2" class="{{ $errors->has('roadmap_request_2') ? ' is-invalid' : '' }}" value="{{ old('roadmap_request_2') }}" >
-                </div>
-
-            </div>
-
-            <div class="mb-3">
-                <label for="roadmap_request_3" >{{ trans('cruds.roadmap.fields.roadmap_request_4') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="roadmap_request_3" name="roadmap_request_3" class="{{ $errors->has('roadmap_request_3') ? ' is-invalid' : '' }}" value="{{ old('roadmap_request_3') }}" >
-                </div>
-
-            </div>
-
-            <div class="mb-3">
-                <label for="roadmap_request_4" >{{ trans('cruds.roadmap.fields.roadmap_request_5') }}</label>
-
-                <div class="form-group">
-                    <input type="text" id="roadmap_request_4" name="roadmap_request_4" class="{{ $errors->has('roadmap_request_4') ? ' is-invalid' : '' }}" value="{{ old('roadmap_request_4') }}" >
-                </div>
-
-            </div>
-
+           
 {{-- users --}}
             <!-- <div class="mb-3">
                 <label for="users" class="text-xs">{{ trans('cruds.project.fields.users') }}</label>

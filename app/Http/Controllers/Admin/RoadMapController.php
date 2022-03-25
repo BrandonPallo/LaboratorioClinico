@@ -33,10 +33,11 @@ class RoadMapController extends Controller
     }
 
     public function store(StoreRoadMapRequest $request)
-    {
+    {        
         $roadmap = RoadMap::create($request->all());
-        $roadmap->users()->sync($request->input('users', []));
-
+        
+        //$roadmap->users()->sync($request->input('users', []));
+        
         return redirect()->route('admin.roadmaps.index');
     }
 
@@ -64,10 +65,11 @@ class RoadMapController extends Controller
 
     public function show(RoadMap $roadmap)
     {
+        
         abort_if(Gate::denies('roadmap_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $roadmap->load('users');
-
+        
+        //$roadmap->load('users');
+        
         return view('admin.roadmaps.show', compact('roadmap'));
     }
 

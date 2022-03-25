@@ -19,7 +19,7 @@ class StoreRoadMapRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'    => [
+            'day'    => [
                 'string',
                 'required',
             ],

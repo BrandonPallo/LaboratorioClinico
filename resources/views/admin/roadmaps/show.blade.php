@@ -23,164 +23,57 @@
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.roadmap.fields.name') }}
+                        {{ trans('cruds.roadmap.fields.day') }}
                     </th>
                     <td>
-                        {{ $roadmap->name }}
+                        {{ $roadmap->day }}
                     </td>
                 </tr>
 
                 <tr>
                     <th>
-                        {{ trans('cruds.roadmap.fields.company') }}
+                        {{ trans('cruds.roadmap.fields.start_time') }}
                     </th>
                     <td>
-                        {{ $roadmap->company }}
+                        {{ $roadmap->start_time }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.roadmap.fields.roadmap_engineer') }}
+                        {{ trans('cruds.roadmap.fields.out_time') }}
                     </th>
                     <td>
-                        {{ $roadmap->roadmap_engineer }}
+                        {{ $roadmap->out_time }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.roadmap.fields.date') }}
+                        {{ trans('cruds.roadmap.fields.start_time') }}
                     </th>
                     <td>
-                        {{ $roadmap->date }}
+                        {{ $roadmap->start_time }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.roadmap.fields.csr') }}
+                        {{ trans('cruds.roadmap.fields.end_time') }}
                     </th>
                     <td>
-                        {{ $roadmap->csr }}
+                        {{ $roadmap->end_time }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('cruds.roadmap.fields.company_1') }}
+                        {{ trans('cruds.roadmap.fields.in_time') }}
                     </th>
                     <td>
-                        {{ $roadmap->company_1 }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.company_2') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->company_2 }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.addres_1') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->addres_1 }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.addres_2') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->addres_2 }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.site_contact') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->site_contact }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.attention') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->attention }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.phone_1') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->phone_1 }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.phone_2') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->phone_2 }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.roadmap_request_1') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->roadmap_request }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.roadmap_request_2') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->roadmap_request_1 }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.roadmap_request_3') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->roadmap_request_2 }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.roadmap_request_4') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->roadmap_request_3 }}
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        {{ trans('cruds.roadmap.fields.roadmap_request_5') }}
-                    </th>
-                    <td>
-                        {{ $roadmap->roadmap_request_4 }}
+                        {{ $roadmap->in_time }}
                     </td>
                 </tr>
             </tbody>
-{{-- users --}}
 
-            <!-- <tbody>
-                <tr>
-                    <th>
-                        {{ trans('cruds.project.fields.users') }}
-                    </th>
-                    <td>
-                        @foreach($roadmap->users as $key => $users)
-                            <span class="label label-info">{{ $users->name }}</span>
-                        @endforeach
-                    </td>
-                </tr>
-            </tbody> -->
+
+            
         </table>
         <div class="block pt-4">
             <a class="btn-md btn-gray" href="{{ route('admin.roadmaps.index') }}">
