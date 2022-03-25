@@ -37,7 +37,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('services/destroy', 'ServicesController@massDestroy')->name('services.massDestroy');
     Route::resource('services', 'ServicesController');
 
-
+    //RoadMaps
+    Route::delete('roadmaps/destroy', 'RoadMapController@massDestroy')->name('roadmaps.massDestroy');
+    Route::resource('roadmaps', 'RoadMapController');
 
     // Folders
     Route::delete('folders/destroy', 'FoldersController@massDestroy')->name('folders.massDestroy');

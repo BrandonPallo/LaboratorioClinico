@@ -3,83 +3,86 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyServiceRequest;
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\UpdateServiceRequest;
-use App\Service;
+use App\Http\Requests\MassDestroyRoadMapRequest;
+use App\Http\Requests\StoreRoadMapRequest;
+use App\Http\Requests\UpdateRoadMapRequest;
+use App\RoadMap;
 use App\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ServicesController extends Controller
+class RoadMapController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('service_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('roadmap_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $services = Service::all();
+        $roadmaps = RoadMap::all();
 
-        return view('admin.servicess.index', compact('services'));
+        return view('admin.roadmaps.index', compact('roadmaps'));
     }
 
     public function create()
     {
-        abort_if(Gate::denies('service_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('roadmap_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $users = User::all()->pluck('name', 'id');
 
-        return view('admin.servicess.create', compact('users'));
+        return view('admin.roadmaps.create', compact('users'));
     }
 
-    public function store(StoreServiceRequest $request)
+    public function store(StoreRoadMapRequest $request)
     {
-        $service = Service::create($request->all());
-        $service->users()->sync($request->input('users', []));
+        $roadmap = RoadMap::create($request->all());
+        $roadmap->users()->sync($request->input('users', []));
 
-        return redirect()->route('admin.services.index');
+        return redirect()->route('admin.roadmaps.index');
     }
 
-    public function edit(Service $service)
+    public function edit(RoadMap $roadmap)
     {
-        abort_if(Gate::denies('service_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('roadmap_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+
+
 
         $users = User::all()->pluck('name', 'id');
 
-        $service->load('users');
+        $roadmap->load('users');
 
-        return view('admin.servicess.edit', compact('users', 'service'));
+        return view('admin.roadmaps.edit', compact('users', 'roadmap'));
     }
 
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function update(UpdateRoadMapRequest $request, RoadMap $roadmap)
     {
-        $service->update($request->all());
-        $service->users()->sync($request->input('users', []));
+        $roadmap->update($request->all());
+        $roadmap->users()->sync($request->input('users', []));
 
-        return redirect()->route('admin.services.index');
+        return redirect()->route('admin.roadmaps.index');
     }
 
-    public function show(Service $service)
+    public function show(RoadMap $roadmap)
     {
-        abort_if(Gate::denies('service_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('roadmap_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $service->load('users');
+        $roadmap->load('users');
 
-        return view('admin.servicess.show', compact('service'));
+        return view('admin.roadmaps.show', compact('roadmap'));
     }
 
-    public function destroy(Service $service)
+    public function destroy(RoadMap $roadmap)
     {
-        abort_if(Gate::denies('service_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('roadmap_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $service->delete();
+        $roadmap->delete();
 
         return back();
     }
 
-    public function massDestroy(MassDestroyServiceRequest $request)
+    public function massDestroy(MassDestroyRoadMapRequest $request)
     {
-        Service::whereIn('id', request('ids'))->delete();
+        RoadMap::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }

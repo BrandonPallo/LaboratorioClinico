@@ -137,6 +137,27 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 32,
                 'title' => 'service_access',
             ],
+                   //roadmap
+            [
+                'id'    => 33,
+                'title' => 'roadmap_create',
+            ],
+            [
+                'id'    => 34,
+                'title' => 'roadmap_edit',
+            ],
+            [
+                'id'    => 35,
+                'title' => 'roadmap_show',
+            ],
+            [
+                'id'    => 36,
+                'title' => 'roadmap_delete',
+            ],
+            [
+                'id'    => 37,
+                'title' => 'roadmap_access',
+            ],
         ];
 
         Permission::insert($permissions);

@@ -7,11 +7,11 @@ use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class StoreServiceRequest extends FormRequest
+class UpdateRoadMapRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('service_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('service_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }

@@ -214,6 +214,52 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
+    'roadmap'        => [
+        'title'          => 'RoadMaps',
+        'title_singular' => 'RoadMap',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => '',            
+/*
+            'company_2'       => 'Compañía_2 / Company_2',
+            'company_2_helper'         => '',
+            'addres_1'       => 'Direccion_1 / Addres_1',
+            'addres_1_helper'         => '',
+            'addres_2'       => 'Direccion_2 / Address_2',
+            'addres_2_helper'         => '',
+            'site_contact'       => 'Contacto del sitio / Site Contact',
+            'site_contact_helper'         => '',
+            'attention'       => 'Atención / Attention',
+            'attention_helper'         => '',
+            'phone_1'       => 'Teléfono_1 / Phone_1',
+            'phone_1_helper'         => '',
+            'phone_2'      => 'Teléfono_2 / Phone_2',
+            'phone_2_helper'         => '',
+
+            'service_request_1'       => 'Petición de servicio 1 / Service Request ',
+            'service_request_helper_1'         => '',
+            'service_request_2'       => 'Petición de servicio 2 / Service Request ',
+            'service_request_helper_2'         => '',
+            'service_request_3'       => 'Petición de servicio 3 / Service Request ',
+            'service_request_helper_3'         => '',
+            'service_request_4'       => 'Petición de servicio 4 / Service Request ',
+            'service_request_helper_4'         => '',
+            'service_request_5'       => 'Petición de servicio 5 / Service Request ',
+            'service_request_helper_5'         => '',
+
+*/
+
+            'users'             => 'Users',
+            'users_helper'      => '',
+            'created_at'        => 'Created at',
+            'created_at_helper' => '',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => '',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => '',
+        ],
+    ],
+
 
 
 

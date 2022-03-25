@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Service;
+use App\RoadMap;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassDestroyServiceRequest extends FormRequest
+class MassDestroyRoadMapRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('service_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('roadmap_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -20,7 +20,7 @@ class MassDestroyServiceRequest extends FormRequest
     {
         return [
             'ids'   => 'required|array',
-            'ids.*' => 'exists:services,id',
+            'ids.*' => 'exists:roadmaps,id',
         ];
     }
 }
