@@ -194,6 +194,19 @@
             </a>
         @endcan
 
+        {{-- RoadMap --}}
+        @can('service_access')
+            <a class="nav-link{{ request()->is('admin/roadmaps*') ? ' active' : '' }}"
+                href="{{ route('admin.roadmaps.index') }}">
+                <i class="fas fa-clipboard">
+                    
+                </i>
+
+                <span class="mx-4">{{ trans('cruds.roadmap.title') }}</span>
+            </a>
+        @endcan 
+
+
         @can('folder_access')
             <a class="nav-link{{ request()->is('admin/folders*') ? ' active' : '' }}"
                 href="{{ route('admin.folders.index') }}">

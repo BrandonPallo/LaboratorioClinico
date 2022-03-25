@@ -25,8 +25,11 @@
         "tailwindcss": "^3.0.23",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+<<<<<<< HEAD
     },
     "dependencies": {
         "vue2-google-maps": "^0.10.7"
+=======
+>>>>>>> 56f11e1305fde115b5a8b3bdfdc9336aadeff6c3
     }
 }

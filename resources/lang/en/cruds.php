@@ -214,6 +214,51 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
+    'roadmap'        => [
+        'title'          => 'RoadMaps',
+        'title_singular' => 'RoadMap',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => '',
+            'date'       => 'Fecha hoja de ruta / Date of road map',
+            'date_helper'         => '',
+            'day'       => 'Dia_de_creacion / Day of creation',
+            'day_helper'         => '',
+            'out_time'       => 'Hora de salida / Out_time',
+            'out_time_helper'         => '',
+            'start_time'       => 'Hora de inicio del trabajo / Strart_time',
+            'start_time_helper'         => '',
+            'end_time'       => 'Hora de fin del trabajo / End_time',
+            'end_time_helper'         => '',
+            'in_time'       => 'Hora de llegada / In_time',
+            'in_time_helper'         => '',
+            /*'phone_2'      => 'Teléfono_2 / Phone_2',
+            'phone_2_helper'         => '',
+
+            'service_request_1'       => 'Petición de servicio 1 / Service Request ',
+            'service_request_helper_1'         => '',
+            'service_request_2'       => 'Petición de servicio 2 / Service Request ',
+            'service_request_helper_2'         => '',
+            'service_request_3'       => 'Petición de servicio 3 / Service Request ',
+            'service_request_helper_3'         => '',
+            'service_request_4'       => 'Petición de servicio 4 / Service Request ',
+            'service_request_helper_4'         => '',
+            'service_request_5'       => 'Petición de servicio 5 / Service Request ',
+            'service_request_helper_5'         => '',
+
+*/
+
+            'users'             => 'Users',
+            'users_helper'      => '',
+            'created_at'        => 'Created at',
+            'created_at_helper' => '',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => '',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => '',
+        ],
+    ],
+
 
 
 
