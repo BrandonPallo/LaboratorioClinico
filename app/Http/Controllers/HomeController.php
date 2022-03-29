@@ -7,6 +7,7 @@ use Exception;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PDF;
 use DB;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -92,12 +93,13 @@ class HomeController extends Controller
             $savePdfPath = public_path('S_'.$service->addres_1.'_'.$service->csr.'_0'.$service->cont.'_'.$dia.$mes.$anio.'.pdf');            
         }
         /*@ Elimina el arcihvo temporal de word */
-         if ( file_exists($saveDocPath) ) {
-            unlink($saveDocPath);
-        }
+          if ( file_exists($saveDocPath) ) {
+             unlink($saveDocPath);
+         }
         //descargar el pdf
         $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
         $PDFWriter->save($savePdfPath);
         return response()->download($savePdfPath); 
+        
     }
 }

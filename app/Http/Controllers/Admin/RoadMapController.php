@@ -11,7 +11,7 @@ use App\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Carbon\Carbon;
 class RoadMapController extends Controller
 {
     public function index()
@@ -25,12 +25,24 @@ class RoadMapController extends Controller
 
     public function create()
     {
+        $now = Carbon::now();
         abort_if(Gate::denies('roadmap_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $users = User::all()->pluck('name', 'id');
 
-        return view('admin.roadmaps.create', compact('users'));
+        return view('admin.roadmaps.create', compact('users','now'));
     }
+    // public function hora()
+    // {
+    //     $now = Carbon::now();
+
+    //     abort_if(Gate::denies('roadmap_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+    //     $users = User::all()->pluck('name', 'id');
+
+    //     return view('admin.roadmaps.create', compact('users','now'));
+    // }
+
 
     public function store(StoreRoadMapRequest $request)
     {        

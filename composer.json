@@ -22,7 +22,8 @@
         "laravel/ui": "^3.0",
         "phpoffice/phpword": "^0.18.3",
         "spatie/laravel-medialibrary": "^8.7",
-        "yajra/laravel-datatables-oracle": "^9.9"
+        "yajra/laravel-datatables-oracle": "^9.9",
+        "nesbot/carbon": "^2.57.0"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
