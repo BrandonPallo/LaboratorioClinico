@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Service;
+use App\RoadMap;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
@@ -19,7 +19,7 @@ class UpdateRoadMapRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'    => [
+            'day'    => [
                 'string',
                 'required',
             ],

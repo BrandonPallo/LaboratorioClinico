@@ -25,31 +25,19 @@ class RoadMapController extends Controller
 
     public function create()
     {
-        $now = Carbon::now();
         abort_if(Gate::denies('roadmap_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::all()->pluck('name', 'id');
+        $users = User::all()->pluck('day', 'id');
 
-        return view('admin.roadmaps.create', compact('users','now'));
+        return view('admin.roadmaps.create', compact('users'));
     }
-    // public function hora()
-    // {
-    //     $now = Carbon::now();
-
-    //     abort_if(Gate::denies('roadmap_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-    //     $users = User::all()->pluck('name', 'id');
-
-    //     return view('admin.roadmaps.create', compact('users','now'));
-    // }
-
 
     public function store(StoreRoadMapRequest $request)
-    {        
+    {
         $roadmap = RoadMap::create($request->all());
-        
+
         //$roadmap->users()->sync($request->input('users', []));
-        
+
         return redirect()->route('admin.roadmaps.index');
     }
 
@@ -57,31 +45,28 @@ class RoadMapController extends Controller
     {
         abort_if(Gate::denies('roadmap_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $users = User::all()->pluck('day', 'id');
 
+        // $roadmap->load('users');
 
-
-        $users = User::all()->pluck('name', 'id');
-
-        $roadmap->load('users');
-
-        return view('admin.roadmaps.edit', compact('users', 'roadmap'));
+        return view('admin.roadmaps.edit', compact('roadmap'));
     }
 
     public function update(UpdateRoadMapRequest $request, RoadMap $roadmap)
     {
         $roadmap->update($request->all());
-        $roadmap->users()->sync($request->input('users', []));
+        //$roadmap->users()->sync($request->input('users', []));
 
         return redirect()->route('admin.roadmaps.index');
     }
 
     public function show(RoadMap $roadmap)
     {
-        
+
         abort_if(Gate::denies('roadmap_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        
+
         //$roadmap->load('users');
-        
+
         return view('admin.roadmaps.show', compact('roadmap'));
     }
 

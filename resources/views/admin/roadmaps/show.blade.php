@@ -70,6 +70,30 @@
                         {{ $roadmap->in_time }}
                     </td>
                 </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.roadmap.fields.labor') }}
+                    </th>
+                    <td>
+                        {{ $roadmap->labor }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.roadmap.fields.travel') }}
+                    </th>
+                    <td>
+                        {{ $roadmap->travel }}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.roadmap.fields.standby') }}
+                    </th>
+                    <td>
+                        {{ $roadmap->standby }}
+                    </td>
+                </tr>
             </tbody>
 
 

@@ -20,7 +20,10 @@ class CreateRoadMap extends Migration
             $table->string('out_time');
             $table->string('start_time');
             $table->string('end_time');
-            $table->string('in_time');            
+            $table->string('in_time');  
+            $table->string('labor');
+            $table->string('travel');
+            $table->string('standby');            
             $table->timestamps();
             $table->softDeletes();
         });
