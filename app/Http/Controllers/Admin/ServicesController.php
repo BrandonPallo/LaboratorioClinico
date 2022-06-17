@@ -26,10 +26,11 @@ class ServicesController extends Controller
     public function create()
     {
         abort_if(Gate::denies('service_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $clients = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $users = User::all()->pluck('name', 'id');
 
-        return view('admin.servicess.create', compact('users'));
+        return view('admin.servicess.create', compact('users', 'clients'));
     }
 
     public function store(StoreServiceRequest $request)

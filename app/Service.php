@@ -33,6 +33,7 @@ class Service extends Model
         'phone_1',
         'phone_2',
         'service_request',
+        'id_user',
         'service_request_1',
         'service_request_2',
         'service_request_3',
@@ -50,5 +51,8 @@ class Service extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+    public function users_services(){
+        return $this->hasMany(User::class, 'id_user','id');
     }
 }

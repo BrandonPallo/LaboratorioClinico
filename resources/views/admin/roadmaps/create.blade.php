@@ -13,6 +13,22 @@
             <div class="header">
                 <h1>DATA</h1>
             </div>
+            <div class="w-full lg:w-4/12 px-4">
+                <div class="relative w-full mb-3">
+                    <label for="service" class="block uppercase text-blueGray-600 text-xs font-bold mb-2 required">Elije el Servicio</label>
+                    <div class="form-group">
+                        <select class="select{{ $errors->has('service') ? ' is-invalid' : '' }}" name="id_service" id="id_service" required>
+                            @foreach($services as $id => $service)
+                                <option value="{{ $id }}" {{ old('id_service') == $id ? 'selected' : '' }}>{{ $service }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @if($errors->has('service'))
+                        <p class="invalid-feedback">{{ $errors->first('service') }}</p>
+                    @endif
+                    {{-- <span class="block">{{ trans('cruds.project.fields.service_helper') }}</span> --}}
+                </div>
+            </div>
             {{-- formulario hoja de ruta --}}
             <div class="mb-3">
                 <label for="day" class="text-xs required">{{ trans('cruds.roadmap.fields.day') }}</label>
@@ -52,23 +68,7 @@
                     <input class="btn-md btn-green" id="btn1" type='button' value='Guardar hora de salida' > 
                     
                 </div> 
-                <!-- //Cronometro -->
-                <!-- <section class="section">
-                <div class="columns">
-                    <div class="column has-text-centered">
-                        <h2 id="tiempoTranscurrido"></h2>
-                        <button class="button is-success is-large" id="btnIniciar"><span class="mdi mdi-play"></span></button>
-                        <button class="button is-success is-large" id="btnPausar"><span class="mdi mdi-pause"></span></button>
-                        <button class="button is-primary is-large" id="btnMarca"><span class="mdi mdi-flag"></span></button>
-                        <button class="button is-warning is-large" id="btnDetener"><span class="mdi mdi-stop"></span></button>
-                        <div id="contenedorMarcas">
-                        </div>
-                    </div>
-                </div>
-            </section> -->
            </div>
-
-           
 
             <div class="mb-3">
                 <label for="start_time" class="text-xs required">{{ trans('cruds.roadmap.fields.start_time') }}</label>
@@ -158,12 +158,48 @@
                 @endif
                 <span class="block">{{ trans('cruds.roadmap.fields.standby_helper') }}</span>
                 <div class="block my-4">
-                
             </div>
-            
 
+            <h1>PROGRESO DEL SERVICIO</h1>
+            <br>
+            <!-- barra de progreso -->
+            <div class="mb-3">
+                <label for="porcentaje" class="text-xs required">{{ trans('cruds.roadmap.fields.porcentaje') }}</label>
+
+                <div id="myProgress">
+                    <div id="myBar">
+                        <div id="label">0</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="porcentaje" name="porcentaje" class="{{ $errors->has('porcentaje') ? ' is-invalid' : '' }}" value="{{ old('porcentaje')}}" >
+                </div>
+                @if($errors->has('porcentaje'))
+                    <p class="invalid-feedback">{{ $errors->first('porcentaje') }}</p>
+                @endif
             </div>
-           
+            <!-- fin de progreso -->
+            <!-- <div id="myProgress">
+                <div id="myBar">
+                    <div id="label">0%</div>
+                </div>
+            </div> -->
+            
+            <!-- barra de porgreso circular -->
+            <div class="block my-4">
+                   <div class="circular-progress">
+                        <div class="value-container">0%</div>
+                    </div>
+            </div> 
+            <!-- botones de progreso -->
+            <div class="block my-4">
+                <input class="btn-md btn-red" id="btn6" type='button' value='Reducir progreso' onclick="reducir()">
+                <input class="btn-md btn-blue" id="btn5" type='button' value='Añadir progreso' onclick="aumentar()"> 
+            </div>            
+
+            <!-- canvas para la grafica -->
+            <!-- <canvas id="myChart" width="20" height="20"></canvas> -->
+                
 {{-- users --}}
             <!-- <div class="mb-3">
                 <label for="users" class="text-xs">{{ trans('cruds.project.fields.users') }}</label>
@@ -182,9 +218,11 @@
                 <span class="block">{{ trans('cruds.project.fields.users_helper') }}</span>
             </div> -->
         </div>
+        <!-- script para funciones de hora -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
         <script>
-            moment.locale("es");  
+            var x = document.getElementById("porcentaje");
+            x.style.display = "none";
             let dia=moment().format('dddd');  
             let fecha=moment().format('DD/MM/YYYY');  
             document.getElementById('day').value=dia;
@@ -194,6 +232,8 @@
             const button2 = document.getElementById("btn2");
             const button3 = document.getElementById("btn3");
             const button4 = document.getElementById("btn4");
+            const button5 = document.getElementById("btn5");
+            const button6 = document.getElementById("btn6");
 
             document.getElementById("btn1").onclick = function(){
                 if(document.getElementById('out_time').value===""){
@@ -271,7 +311,8 @@
                 let hours = Math.floor(d.asHours());
                 let mins = Math.floor(d.asMinutes()) - hours * 60;
                 console.log("hours:" + hours + " mins:" + mins);
-                document.getElementById('labor').value="horas: " + hours + " minutos: " + mins;
+                //document.getElementById('labor').value="horas: " + hours + " minutos: " + mins;
+                document.getElementById('labor').value=hours;
             }
             function calculoHorasViaje(){
                 let dif1=moment(t1,'HH:mm:ss').diff(moment(t, 'HH:mm:ss'));
@@ -281,11 +322,57 @@
                 let hours = Math.floor(d.asHours());
                 let mins = Math.floor(d.asMinutes()) - hours * 60;
                 console.log("hours:" + hours + " mins:" + mins);
-                document.getElementById('travel').value="horas: " + hours + " minutos: " + mins;
+                //document.getElementById('travel').value="horas: " + hours + " minutos: " + mins;
+                document.getElementById('travel').value=hours;
             }
-            //cronometro
-
-        </script>
+            //barra de progreso
+            var width = document.getElementById('label').getAttribute('value');
+            
+            //variables de barra de progreso circular
+            let progressBar = document.querySelector(".circular-progress");
+            let valueContainer = document.querySelector(".value-container");
+            let progressValue = 0;
+            function aumentar(){
+                if (width < 100) {
+                    var elem = document.getElementById("myBar");   
+                    width+=10; 
+                    elem.style.width = width + '%'; 
+                    document.getElementById("label").innerHTML = width +'%';
+                    if(width==100){
+                        alert("Trabajo completado");
+                    }
+                    document.getElementById('porcentaje').value=width;
+                }
+                //aumento barra de progreso circular
+                if(progressValue<100){
+                    progressValue+=10;
+                    valueContainer.textContent = `${progressValue}%`;
+                    progressBar.style.background = `conic-gradient(
+                        #4d5bf9 ${progressValue * 3.6}deg,
+                        #cadcff ${progressValue * 3.6}deg  
+                    )`;
+                }
+            }
+            function reducir(){
+                if (width > 0) {
+                    var elem = document.getElementById("myBar");        
+                    width-=10; 
+                    elem.style.width = width + '%'; 
+                    document.getElementById("label").innerHTML = width+'%';
+                    document.getElementById('porcentaje').value=width;
+                }
+                //disminucion barra de progreso circular
+                if(progressValue>0){
+                    progressValue-=10;
+                    valueContainer.textContent = `${progressValue}%`;
+                    progressBar.style.background = `conic-gradient(
+                        #4d5bf9 ${progressValue * 3.6}deg,
+                        #cadcff ${progressValue * 3.6}deg  
+                    )`;
+                }
+            }  
+            
+        </script>   
         <div class="footer">
             <button type="submit" class="submit-button">{{ trans('global.save') }}</button>
         </div>

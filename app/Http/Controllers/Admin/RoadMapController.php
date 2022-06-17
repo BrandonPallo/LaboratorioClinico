@@ -7,6 +7,7 @@ use App\Http\Requests\MassDestroyRoadMapRequest;
 use App\Http\Requests\StoreRoadMapRequest;
 use App\Http\Requests\UpdateRoadMapRequest;
 use App\RoadMap;
+use App\Service;
 use App\User;
 use Gate;
 use Illuminate\Http\Request;
@@ -26,10 +27,11 @@ class RoadMapController extends Controller
     public function create()
     {
         abort_if(Gate::denies('roadmap_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $services = Service::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $users = User::all()->pluck('day', 'id');
 
-        return view('admin.roadmaps.create', compact('users'));
+        return view('admin.roadmaps.create', compact('users', 'services'));
     }
 
     public function store(StoreRoadMapRequest $request)

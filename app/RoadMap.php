@@ -28,6 +28,8 @@ class RoadMap extends Model
         'labor',
         'travel',
         'standby',
+        'id_service',
+        'porcentaje',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -41,5 +43,9 @@ class RoadMap extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function services_roadmap(){
+        return $this->hasMany(Service::class, 'id_service','id');
     }
 }

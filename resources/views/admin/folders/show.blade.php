@@ -37,6 +37,7 @@
                         {{ $folder->project->name ?? '' }}
                     </td>
                 </tr>
+                
                 <tr>
                     <th>
                         {{ trans('cruds.folder.fields.folder') }}

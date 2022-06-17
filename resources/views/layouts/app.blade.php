@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div class="flex justify-center items-center h-screen bg-gray-200 px-6">
+    <div class="flex justify-center items-center h-screen bg-gray-200 px-6" id="fondo">
         @yield("content")
     </div>
 

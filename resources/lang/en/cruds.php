@@ -160,6 +160,7 @@ return [
         'title'          => 'Services',
         'title_singular' => 'Service',
         'title_singular1' => 'Encabezado',
+        'title_singular2' => 'Document Service',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => '',
@@ -167,7 +168,7 @@ return [
             'name_helper'       => '',
             'company'          => 'Compañía / Company:',
             'company_helper'       => '',
-            'service_engineer'           => 'Ingeniera de servicio / Service Engineer:',
+            'service_engineer'           => 'Ingeniero de servicio / Service Engineer:',
             'service_engineer_helper'       => '',
             'date'      => 'Fecha / Date:',
             'date_helper'       => '',
@@ -191,7 +192,7 @@ return [
             'phone_2'      => 'Teléfono_2 / Phone_2',
             'phone_2_helper'         => '',
 
-            'service_request_1'       => 'Petición de servicio 1 / Service Request ',
+            'service_request_1'       => 'Petición de servicio / Service Request ',
             'service_request_helper_1'         => '',
             'service_request_2'       => 'Petición de servicio 2 / Service Request ',
             'service_request_helper_2'         => '',
@@ -248,8 +249,4 @@ return [
             'deleted_at_helper' => '',
         ],
     ],
-
-
-
-
 ];

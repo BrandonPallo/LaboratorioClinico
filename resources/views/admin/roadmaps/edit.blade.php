@@ -121,9 +121,33 @@
                 <div class="form-group">
                     <input type="text" id="standby" name="standby" class="{{ $errors->has('standby') ? ' is-invalid' : '' }}" value="{{ old('standby', $roadmap->standby) }}">
                 </div>
-                
-                
             </div>
+            <h1>PROGRESO DEL SERVICIO</h1>
+            <br>
+            <!-- barra de progreso -->
+            <div class="mb-3">
+                <label for="porcentaje" class="text-xs required">{{ trans('cruds.roadmap.fields.porcentaje') }}</label>
+
+                <div id="myProgress">
+                    <div id="myBar">
+                        <div id="label">0</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="porcentaje" name="porcentaje" class="{{ $errors->has('porcentaje') ? ' is-invalid' : '' }}" value="{{ old('porcentaje', $roadmap->porcentaje) }}" >
+                </div>
+            </div>
+            <!-- botones de progreso -->
+            <div class="block my-4">
+                <input class="btn-md btn-red" id="btn6" type='button' value='Reducir progreso' onclick="reducir()">
+                <input class="btn-md btn-blue" id="btn5" type='button' value='Añadir progreso' onclick="aumentar()"> 
+            </div>
+            <!-- barra de porgreso circular -->
+            <div class="block my-4">
+                   <div class="circular-progress">
+                        <div class="value-container">0%</div>
+                    </div>
+            </div> 
 
             {{-- <!-- <div class="mb-3">
                 <label for="labor" class="text-xs required">{{ trans('cruds.roadmap.fields.labor') }}</label>
@@ -160,7 +184,8 @@
         </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
     <script>
-            moment.locale("es");  
+            var x = document.getElementById("porcentaje");
+            //x.style.display = "none";
             let dia=moment().format('dddd');  
             let fecha=moment().format('DD/MM/YYYY');  
             document.getElementById('day').value=dia;
@@ -170,6 +195,8 @@
             const button2 = document.getElementById("btn2");
             const button3 = document.getElementById("btn3");
             const button4 = document.getElementById("btn4");
+            const button5 = document.getElementById("btn5");
+            const button6 = document.getElementById("btn6");
 
             document.getElementById("btn1").onclick = function(){
                 if(document.getElementById('out_time').value===""){
@@ -242,32 +269,85 @@
                 
             } 
             function calculoHorasTrabajadas(){
-                t1 = document.getElementById("start_time").value;
-                t2 = document.getElementById("end_time").value;
-                console.log("Tiempo 1 "+t1);
                 let dif=moment(t2,'HH:mm:ss').diff(moment(t1, 'HH:mm:ss'));
                 let d = moment.duration(dif, 'milliseconds');
                 let hours = Math.floor(d.asHours());
                 let mins = Math.floor(d.asMinutes()) - hours * 60;
-                console.log("hours:" + hours + " mins:" + mins);
-                document.getElementById('labor').value="horas: " + hours + " minutos: " + mins;
+                document.getElementById('labor').value=hours;
             }
             function calculoHorasViaje(){
-                t = document.getElementById("out_time").value;
-                t1 = document.getElementById("start_time").value;
-                t2 = document.getElementById("end_time").value;
-                t3 = document.getElementById("in_time").value;
                 let dif1=moment(t1,'HH:mm:ss').diff(moment(t, 'HH:mm:ss'));
                 let dif2=moment(t3,'HH:mm:ss').diff(moment(t2, 'HH:mm:ss'));
                 let sum=dif1+dif2;
                 let d = moment.duration(sum, 'milliseconds');
                 let hours = Math.floor(d.asHours());
                 let mins = Math.floor(d.asMinutes()) - hours * 60;
-                console.log("hours:" + hours + " mins:" + mins);
-                document.getElementById('travel').value="horas: " + hours + " minutos: " + mins;
+                document.getElementById('travel').value=hours;
             }
-            //cronometro
+            //barra de progreso
+            //obtener el valor del porcentaje de la base de datos
+            var width=document.getElementById('porcentaje').value;
+            //asignar el valor del porcentaje al label
+            document.getElementById("label").innerHTML = width +'%';
+            //asignar el valor de la barra
+            document.getElementById("myBar").value = width+"%";
+            console.log(document.getElementById("label").value = width+"%");
+            var eleme = document.getElementById("myBar");
+            eleme.style.width = width + '%';
+            console.log("hola: "+width);
+            console.log("bar "+document.getElementById("myBar").value);
+            //variables de barra de progreso circular
+            let progressBar = document.querySelector(".circular-progress");
+            let valueContainer = document.querySelector(".value-container");
+            let progressValue = 0;
+            function aumentar(){
+                var nuevo=width;
+                console.log("trincado "+nuevo);
+                if (nuevo < 100) {
+                    console.log("width "+nuevo);
+                    var elem = document.getElementById("myBar");
+                    nuevo+=10; 
+                    console.log("width 3 "+nuevo);
+                    elem.style.width = nuevo + '%'; 
+                    document.getElementById("label").innerHTML = nuevo +'%';
+                    if(width==100){
+                        alert("Trabajo completado");
+                    }
+                    // if(width==nuevo){
+                    //     console.log("trincado2 "+width/100);
+                    // }
+                    document.getElementById('porcentaje').value=width;
+                }
 
+                //aumento barra de progreso circular
+                if(progressValue<100){
+                    progressValue+=10;
+                    valueContainer.textContent = `${progressValue}%`;
+                    progressBar.style.background = `conic-gradient(
+                        #4d5bf9 ${progressValue * 3.6}deg,
+                        #cadcff ${progressValue * 3.6}deg  
+                    )`;
+                }
+            }
+            function reducir(){
+                if (width > 0) {
+                    var elem = document.getElementById("myBar");        
+                    width-=10; 
+                    elem.style.width = width + '%'; 
+                    document.getElementById("label").innerHTML = width+'%';
+                    document.getElementById('porcentaje').value=width;
+                }
+                //disminucion barra de progreso circular
+                if(progressValue>0){
+                    progressValue-=10;
+                    valueContainer.textContent = `${progressValue}%`;
+                    progressBar.style.background = `conic-gradient(
+                        #4d5bf9 ${progressValue * 3.6}deg,
+                        #cadcff ${progressValue * 3.6}deg  
+                    )`;
+                }
+            }  
+            
         </script>
 
         <div class="footer">

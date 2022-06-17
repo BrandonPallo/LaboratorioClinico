@@ -99,7 +99,8 @@ class HomeController extends Controller
         //descargar el pdf
         $PDFWriter = \PhpOffice\PhpWord\IOFactory::createWriter($Content,'PDF');
         $PDFWriter->save($savePdfPath);
-        return response()->download($savePdfPath); 
+        
+        return response()->download($savePdfPath)->deleteFileAfterSend(true);   
         
     }
 }

@@ -23,7 +23,9 @@ class CreateRoadMap extends Migration
             $table->string('in_time');  
             $table->string('labor');
             $table->string('travel');
-            $table->string('standby');            
+            $table->string('standby');  
+            $table->unsignedInteger('id_service')->nullable();
+            $table->foreign('id_service')->references('id')->on('services')->onDelete('set null');          
             $table->timestamps();
             $table->softDeletes();
         });

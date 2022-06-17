@@ -94,6 +94,14 @@
                         {{ $roadmap->standby }}
                     </td>
                 </tr>
+                <tr>
+                    <th>
+                        {{ trans('cruds.roadmap.fields.porcentaje') }}
+                    </th>
+                    <td>
+                        {{ $roadmap->porcentaje }}
+                    </td>
+                </tr>
             </tbody>
 
 
