@@ -146,30 +146,13 @@
         {{-- Services --}}
         
         @can('service_access')
-            <div class="nav-dropdown">
             
-                <a class="nav-link" href="#">
-                    <i class="fa-fw fas fa-industry"></i>
-                    <span class="mx-4">{{ trans('cruds.service.title') }}</span>
-                    <i class="fa fa-caret-down ml-auto" aria-hidden="true"></i>
-                    </a>
-                  
-                {{-- RoadMap --}}
-
-                <div class="dropdown-items mb-1 hidden">
-
-                <a class="nav-link{{ request()->is('admin/services*') ? ' active' : '' }}"
-                    href="{{ route('admin.services.index') }}">
-                    <i class="fas fa-clipboard"></i>
-                    <span class="mx-4">{{ trans('cruds.service.title_singular2') }}</span>
-                </a> 
-                    <a class="nav-link{{ request()->is('admin/roadmaps*') ? ' active' : '' }}"
-                        href="{{ route('admin.roadmaps.index') }}">
-                        <i class="fas fa-clipboard"></i>
-                        <span class="mx-4">{{ trans('cruds.roadmap.title') }}</span>
-                    </a>
-                </div>
-            </div>   
+            <a class="nav-link{{ request()->is('admin/services*') ? ' active' : '' }}"
+                href="{{ route('admin.services.index') }}">
+                <i class="fas fa-clipboard"></i>
+                <span class="mx-4">{{ trans('cruds.service.title_singular2') }}</span>
+            </a> 
+            
         @endcan
 
         @can('folder_access')

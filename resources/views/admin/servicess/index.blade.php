@@ -72,14 +72,7 @@
                                     </form>
                                 @endcan
                                 <a href="{{url('generate-pdf/' . $service->id)}}"  class="btn-sm btn-red">Exportar PDF</a>
-                                @can('service_create')
-                                    <div class="block my-4">
-                                        <a class="btn-md btn-green" href="{{ route('admin.roadmaps.create') }}">
-                                            {{ trans('global.add') }} {{ trans('cruds.roadmap.title_singular') }}
-                                        </a>
-                                    </div>
-                                @endcan
-
+                                
                             </td>
 
                         </tr>
