@@ -48,32 +48,32 @@ class HomeController extends Controller
     //Función para generar pdf
     public function generatePDF($id)
     {
-        
+       
         //Establecer la ruta del renderizador del motor PDF
         $domPdfPath = base_path('vendor/dompdf/dompdf');
         \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
         \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
-        $service = Service::findOrFail($id);
+        $project = Project::findOrFail($id);
         //Lectura del archivo doc
-        $templateProcessor = new TemplateProcessor('hojaderuta.docx');
+        $templateProcessor = new TemplateProcessor('project.docx');
         //Sustitución de variables en el archivo doc
-        $templateProcessor->setValue('id',$service->id);
-        $templateProcessor->setValue('name',$service->name);
-        $templateProcessor->setValue('company',$service->company);
-        $templateProcessor->setValue('service_engineer',$service->service_engineer);
-        $templateProcessor->setValue('date',$service->date);
-        $templateProcessor->setValue('csr',$service->csr);
-        $templateProcessor->setValue('company_1',$service->company_1);
-        $templateProcessor->setValue('company_2',$service->company_2);
-        $templateProcessor->setValue('addres_1',$service->addres_1);
-        $templateProcessor->setValue('addres_2',$service->addres_2);
-        $templateProcessor->setValue('site_contact',$service->site_contact);
-        $templateProcessor->setValue('attention',$service->attention);
-        $templateProcessor->setValue('phone_1',$service->phone_1);
-        $templateProcessor->setValue('phone_2',$service->phone_2);
-        $templateProcessor->setValue('service_request',$service->service_request);
+        $templateProcessor->setValue('id',$project->id);
+        $templateProcessor->setValue('name',$project->name);
+        $templateProcessor->setValue('revisado',$project->revisado);
+        $templateProcessor->setValue('felaboracion',$project->felaboracion);
+        $templateProcessor->setValue('frevision',$project->frevision);
+        $templateProcessor->setValue('rev',$project->rev);
+        $templateProcessor->setValue('empresa',$project->empresa);
+        $templateProcessor->setValue('proyecto',$project->proyecto);
+        $templateProcessor->setValue('codigo_proy',$project->codigo_proy);
+        $templateProcessor->setValue('ubicacion',$project->ubicacion);
+        $templateProcessor->setValue('fentrega',$project->fentrega);
+        $templateProcessor->setValue('documento',$project->documento);
+        $templateProcessor->setValue('revisado',$project->revisado);
+        $templateProcessor->setValue('nombre_documento',$project->nombre_documento);
+
         //Definir el nombre del documento acorde las fechas
-        $fecha = $service->date;
+        $fecha = $project->felaboracion;
         $fechaComoEntero = strtotime($fecha);
         $anio = date("y", $fechaComoEntero);
         $mes = date("m", $fechaComoEntero);
@@ -84,14 +84,7 @@ class HomeController extends Controller
         // Cargar temporalmente crear un archivo word
         $Content = \PhpOffice\PhpWord\IOFactory::load($saveDocPath);
         //Guardar en PDF
-        //incrementar el contador de descargas 
-        DB::table('services')->increment('cont');
-        if($service->cont<10){
-            $savePdfPath = public_path('S_'.$service->addres_1.'_'.$service->csr.'_00'.$service->cont.'_'.$dia.$mes.$anio.'.pdf');
-        }
-        else{
-            $savePdfPath = public_path('S_'.$service->addres_1.'_'.$service->csr.'_0'.$service->cont.'_'.$dia.$mes.$anio.'.pdf');            
-        }
+        $savePdfPath = public_path('LAB'.$dia.$mes.$anio. '.pdf');
         /*@ Elimina el arcihvo temporal de word */
           if ( file_exists($saveDocPath) ) {
              unlink($saveDocPath);

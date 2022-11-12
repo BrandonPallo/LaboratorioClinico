@@ -72,6 +72,7 @@
                                     </form>
                                 @endcan
                                 <a href="{{url('generate-docx/' . $project->id)}}"  class="btn-sm btn-blue">Exportar Word</a>
+                                <a href="{{url('generate-pdf/' . $project->id)}}"  class="btn-sm btn-red">Exportar PDF</a>
 
                             </td>
 
